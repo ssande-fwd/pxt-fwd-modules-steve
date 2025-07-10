@@ -1,9 +1,6 @@
 namespace fwdSensors {
-    /**
-     * A sensor measuring ElectricalConductivity.
-     **/
-    //% fixedInstances blockGap=8
-    export class ElectricalConductivityClient extends jacdac.SimpleSensorClient {
+    //% fixedInstances
+    export class EcClient extends jacdac.SimpleSensorClient {
         private readonly _electricalConductivityError: jacdac.RegisterClient<
             [number]
         >
@@ -47,11 +44,9 @@ namespace fwdSensors {
         /**
          * The ElectricalConductivity, uS, of fluids.
          */
-        //% callInDebugger
-        //% group="Environment"
-        //% block="%electricalconductivity electricalconductivity (uS)"
+        //% group="Electrical Conductivity (EC)"
+        //% block="%electricalconductivity µS"
         //% blockId=jacdac_electricalconductivity_electricalconductivity___get
-        //% weight=100
         electricalconductivity(): number {
             return this.reading()
         }
@@ -59,9 +54,7 @@ namespace fwdSensors {
         /**
          * Error on the electricalconductivity reading.
          */
-        //% callInDebugger
-        //% group="Environment"
-        //% weight=99
+        //% group="Electrical Conductivity (EC)"
         electricalconductivityError(): number {
             this.start()
             const values =
@@ -72,9 +65,7 @@ namespace fwdSensors {
         /**
          * Lowest electricalconductivity that can be reported.
          */
-        //% callInDebugger
-        //% group="Environment"
-        //% weight=98
+        //% group="Electrical Conductivity (EC)"
         minElectricalConductivity(): number {
             this.start()
             const values =
@@ -85,9 +76,7 @@ namespace fwdSensors {
         /**
          * Highest electricalconductivity that can be reported.
          */
-        //% callInDebugger
-        //% group="Environment"
-        //% weight=97
+        //% group="Electrical Conductivity (EC)"
         maxElectricalConductivity(): number {
             this.start()
             const values =
@@ -98,10 +87,9 @@ namespace fwdSensors {
         /**
          * Run code when the electricalconductivity changes by the given threshold value.
          */
-        //% group="Environment"
+        //% group="Electrical Conductivity (EC)"
         //% blockId=jacdac_electricalconductivity_on_electricalconductivity_change
         //% block="on %electricalconductivity electricalconductivity changed by %threshold (uS)"
-        //% weight=96
         //% threshold.min=0
         //% threshold.max=10.5
         //% threshold.defl=1
@@ -119,8 +107,7 @@ namespace fwdSensors {
         //% blockId=jacdac_characterscreen_setcalibrationlow_cmd
         //% block="set the low reference calibration on %electricalconductivity|to low %low"
         //% low.defl=1413
-        //% weight=88
-        //% group="Environment"
+        //% group="Electrical Conductivity (EC)"
         setlowreference(low: number): void {
             this.start()
             this.sendCommand(
@@ -142,8 +129,7 @@ namespace fwdSensors {
         //% blockId=jacdac_characterscreen_setcalibrationhigh_cmd
         //% block="set the high reference calibration on %electricalconductivity|to high %high"
         //% high.defl=5000
-        //% weight=88
-        //% group="Environment"
+        //% group="Electrical Conductivity (EC)"
         sethighreference(high: number): void {
             this.start()
             this.sendCommand(
@@ -159,8 +145,6 @@ namespace fwdSensors {
         }
     }
 
-    //% fixedInstance whenUsed weight=1 block="electricalconductivity1"
-    export const electricalconductivity1 = new ElectricalConductivityClient(
-        "electricalconductivity1"
-    )
+    //% fixedInstance whenUsed
+    export const EC1 = new EcClient("ec1")
 }
