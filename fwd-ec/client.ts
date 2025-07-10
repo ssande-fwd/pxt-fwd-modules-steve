@@ -1,4 +1,4 @@
-namespace modules {
+namespace fwdSensors {
     /**
      * A sensor measuring ElectricalConductivity.
      **/
@@ -16,28 +16,31 @@ namespace modules {
 
         constructor(role: string) {
             super(
-                jacdac.SRV_ELECTRICALCONDUCTIVITY,
+                fwdSensors.SRV_ELECTRICALCONDUCTIVITY,
                 role,
-                jacdac.ElectricalConductivityRegPack.ElectricalConductivity
+                fwdSensors.ElectricalConductivityRegPack.ElectricalConductivity
             )
 
             this._electricalConductivityError = this.addRegister<[number]>(
-                jacdac.ElectricalConductivityReg.ElectricalConductivityError,
-                jacdac.ElectricalConductivityRegPack
+                fwdSensors.ElectricalConductivityReg
+                    .ElectricalConductivityError,
+                fwdSensors.ElectricalConductivityRegPack
                     .ElectricalConductivityError,
                 jacdac.RegisterClientFlags.Optional
             )
             this._minElectricalConductivity = this.addRegister<[number]>(
-                jacdac.ElectricalConductivityReg.MinElectricalConductivity,
-                jacdac.ElectricalConductivityRegPack.MinElectricalConductivity,
+                fwdSensors.ElectricalConductivityReg.MinElectricalConductivity,
+                fwdSensors.ElectricalConductivityRegPack
+                    .MinElectricalConductivity,
                 jacdac.RegisterClientFlags.Optional |
-                    jacdac.RegisterClientFlags.Const
+                jacdac.RegisterClientFlags.Const
             )
             this._maxElectricalConductivity = this.addRegister<[number]>(
-                jacdac.ElectricalConductivityReg.MaxElectricalConductivity,
-                jacdac.ElectricalConductivityRegPack.MaxElectricalConductivity,
+                fwdSensors.ElectricalConductivityReg.MaxElectricalConductivity,
+                fwdSensors.ElectricalConductivityRegPack
+                    .MaxElectricalConductivity,
                 jacdac.RegisterClientFlags.Optional |
-                    jacdac.RegisterClientFlags.Const
+                jacdac.RegisterClientFlags.Const
             )
         }
 
@@ -122,9 +125,9 @@ namespace modules {
             this.start()
             this.sendCommand(
                 jacdac.JDPacket.from(
-                    jacdac.ElectricalConductivityCmd.CalibrateLow,
+                    fwdSensors.ElectricalConductivityCmd.CalibrateLow,
                     jacdac.jdpack(
-                        jacdac.ElectricalConductivityCmdPack
+                        fwdSensors.ElectricalConductivityCmdPack
                             .SetCalibrationPoint,
                         [low]
                     )
@@ -145,9 +148,9 @@ namespace modules {
             this.start()
             this.sendCommand(
                 jacdac.JDPacket.from(
-                    jacdac.ElectricalConductivityCmd.CalibrateHigh,
+                    fwdSensors.ElectricalConductivityCmd.CalibrateHigh,
                     jacdac.jdpack(
-                        jacdac.ElectricalConductivityCmdPack
+                        fwdSensors.ElectricalConductivityCmdPack
                             .SetCalibrationPoint,
                         [high]
                     )

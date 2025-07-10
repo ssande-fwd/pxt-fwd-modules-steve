@@ -1,4 +1,4 @@
-namespace jacdac {
+namespace fwdSensors {
     // Service ElectricalConductivity constants
     export const SRV_ELECTRICALCONDUCTIVITY = 0x1e9778c5
     export const enum ElectricalConductivityReg {
