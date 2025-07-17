@@ -1,6 +1,6 @@
 {
     "name": "fwd-modules",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Standalone Forward Education MakeCode modules. Use them individually or group them together in another extension.",
     "license": "MIT",
     "dependencies": {},

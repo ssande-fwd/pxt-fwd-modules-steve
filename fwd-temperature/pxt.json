@@ -1,11 +1,11 @@
 {
     "name": "fwd-temperature",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "FWD Edu Temperature",
     "license": "MIT",
     "dependencies": {
-        "fwd-base": "github:Forward-Education/pxt-fwd-base#v1.0.5",
-        "jacdac-temperature": "github:microsoft/pxt-jacdac/temperature#v1.9.32"
+        "fwd-base": "github:Forward-Education/pxt-fwd-base#v1.0.7",
+        "jacdac-temperature": "github:jacdac/pxt-jacdac/temperature#v1.9.37"
     },
     "files": [
         "client.ts"
