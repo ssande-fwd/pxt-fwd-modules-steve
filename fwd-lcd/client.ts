@@ -1,7 +1,15 @@
 namespace fwdLights {
     /**
-     * A Character display module.
-     **/
+     * The LCD must be initialized to ensure predictable behavior in "on start".
+     * Initialization will delay your program by 3 seconds.
+     */
+    //% block="initialize LCD's"
+    //% blockId=fwd_lcd_initialize
+    //% group="LCD"
+    export function initialize() {
+        pause(3000)
+    }
+
     //% fixedInstances blockGap=8
     export class CharacterDisplayClient extends jacdac.Client {
         private readonly _enabled: jacdac.RegisterClient<[boolean]>
@@ -18,6 +26,40 @@ namespace fwdLights {
                 fwdLights.CharacterDisplayReg.Message,
                 fwdLights.CharacterDisplayRegPack.Message
             )
+
+            this.setEnabled(true)
+        }
+
+        /**
+         * Prints the provided text on the designated line of the LCD.
+         *
+         * @param message message to print
+         * @param line the line to print the message on
+         */
+        //% block="print $message on line $line of $this"
+        //% line.min=1 line.max=2 line.defl=1
+        //% blockId=fwd_lcd_print_line1
+        //% group="LCD"
+        printLine1(message: string, line: number) {
+            line -= 1
+
+            if (message.length > 16) {
+                message = message.substr(0, 16)
+            }
+
+            if (line < 0 || line > 1) {
+                this.setCursor(0, 0)
+                this.setMessage("Error:")
+                this.setCursor(0, 1)
+                this.setMessage("Invalid Line #")
+                pause(5000)
+                this.clear()
+            } else {
+                this.setCursor(0, line)
+                this.setMessage("                ")
+                this.setCursor(0, line)
+                this.setMessage(message)
+            }
         }
 
         /**
@@ -93,7 +135,7 @@ namespace fwdLights {
             const values = this._message.values as any[]
             values[0] = value
             this._message.values = values as [string]
-            pause(20)
+            pause(100)
         }
 
         /**
@@ -108,7 +150,7 @@ namespace fwdLights {
             super.sendCommand(
                 jacdac.JDPacket.onlyHeader(fwdLights.CharacterScreenCmd.Clear)
             )
-            pause(20)
+            //pause(20)
         }
 
         /**
