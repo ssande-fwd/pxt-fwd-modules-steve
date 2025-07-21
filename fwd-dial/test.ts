@@ -1,6 +1,7 @@
-// dial tests
-// position()
-// onRotated(direction: DialDirection, handler: () => void): void
+// Dial Tests
+// Type: functional
+//  position()
+//  onRotated(direction: DialDirection, handler: () => void): void
 fwdButtons.dial1.onRotated(fwdEnums.ClockwiseCounterclockwise.Clockwise, () =>
     console.log("turned -> position " + fwdButtons.dial1.position())
 )
@@ -9,10 +10,11 @@ fwdButtons.dial1.onRotated(
     () => console.log("turned <- position " + +fwdButtons.dial1.position())
 )
 
-// button tests
-// onEvent(event: jacdac.ButtonEvent, handler: () => void)
-// holdDuration(): number
-// isPressed(): boolean
+// Dial Button tests
+// Type: functional
+//  onEvent(event: jacdac.ButtonEvent, handler: () => void)
+//  holdDuration(): number
+//  isPressed(): boolean
 console.log("Button pressed? " + fwdButtons.dialButton1.isPressed())
 fwdButtons.dialButton1.onEvent(jacdac.ButtonEvent.Down, () =>
     console.log("dialdown")

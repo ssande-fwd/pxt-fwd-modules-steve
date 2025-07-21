@@ -11,7 +11,7 @@ namespace fwdSensors {
         //% group="Sonar"
         //% block="$this distance (m)"
         //% blockId=fwd_sonar_get_distance
-        fwdDistance(): number {
+        distance(): number {
             return super.distance()
         }
 
@@ -22,8 +22,8 @@ namespace fwdSensors {
          */
         //% group="Sonar"
         //% block="$this is $direction $threshold m"
-        //% blockId=fwd_solar_is_distance_past_threshold
-        fwdDistancePastThreshold(
+        //% blockId=fwd_sonar_is_past_threshold
+        isPastThreshold(
             threshold: number,
             direction: fwdEnums.OverUnder
         ): boolean {

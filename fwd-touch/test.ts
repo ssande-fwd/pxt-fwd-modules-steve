@@ -1,7 +1,8 @@
-// touch tests
-// onEvent(event: jacdac.ButtonEvent, handler: () => void)
-// holdDuration(): number
-// isPressed(): boolean
+// Touch Sensor Tests
+// Type: functional
+//  onEvent(event: jacdac.ButtonEvent, handler: () => void)
+//  holdDuration(): number
+//  isPressed(): boolean
 console.log("Button pressed? " + fwdButtons.touch1.isPressed())
 fwdButtons.touch1.onEvent(jacdac.ButtonEvent.Down, () =>
     console.log("touchdown")

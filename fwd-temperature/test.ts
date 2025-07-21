@@ -1,6 +1,7 @@
-// temperature tests
-// temperature(): number
-// isPastThreshold(threshold: number, direction: fwdEnums.OverUnder): boolean
+// Temperature Sensor Tests
+// Type: functional
+//  temperature(): number
+//  isPastThreshold(threshold: number, direction: fwdEnums.OverUnder): boolean
 console.log("temperature: " + fwdSensors.temperature1.temperature())
 input.onButtonPressed(Button.A, function () {
     if (fwdSensors.temperature1.isPastThreshold(25, fwdEnums.OverUnder.Over)) {

@@ -1,5 +1,6 @@
-// lights tests
-// setBrightness(value: number)
+// Lights Tests
+// Type: functional
+//  setBrightness(value: number)
 basic.forever(() => {
     console.log("Test Start")
     console.log(

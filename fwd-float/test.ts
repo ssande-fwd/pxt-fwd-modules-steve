@@ -1,7 +1,8 @@
-// float tests
-// onFloatChange(state: FloatState, handler: () => void)
-// floatStateConditional(state: FloatState): boolean
-// floatState(): string
+// Float Tests
+// Type: functional
+//  onFloatChange(state: FloatState, handler: () => void)
+//  floatStateConditional(state: FloatState): boolean
+//  floatState(): string
 fwdSensors.float1.onFloatChange(fwdEnums.RaisedLowered.Raised, () => {
     console.log("Event: raised")
 })
