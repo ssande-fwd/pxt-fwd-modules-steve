@@ -1,10 +1,12 @@
+// Positional Servo Tests
+// Type: functional
 // setAngleAndWait() doesn't work in the simulator, but does with physical hardware.
-// the "ADD SIMULATORS" button will add a 180 servo instead of a 270
-// posSetEnabled(servo: fwdBase.FwdServoClient, state: boolean): void
-// setAngle(servo: fwdBase.FwdServoClient, angle: number): void
-// getAngle(servo: fwdBase.FwdServoClient): number
-// positionPresets(position: ServoClockPositions): number
-// posIsEnabled(servo: fwdBase.FwdServoClient): boolean
+// The "ADD SIMULATORS" button will add a 180 servo instead of a 270
+//  posSetEnabled(servo: fwdBase.FwdServoClient, state: boolean): void
+//  setAngle(servo: fwdBase.FwdServoClient, angle: number): void
+//  getAngle(servo: fwdBase.FwdServoClient): number
+//  positionPresets(position: ServoClockPositions): number
+//  posIsEnabled(servo: fwdBase.FwdServoClient): boolean
 console.log("Enabled?: " + fwdMotors.posIsEnabled(fwdBase.leftServo))
 basic.forever(() => {
     console.log("test start")

@@ -30,7 +30,7 @@ Search Results Card Title: the repo name trimmed of "pxt-"
 Search Results Card Description: the repo about section
 Search Query Target: the repo about section and README file
 
-If the h1 in the README matches the name of the repo then it seems to be ignored by MakeCode docs generator. This is a good thing because the docs generator makes an h1 automatically. If the README h1 was included there would be two h1's.
+If the h1 in the README matches the name of the extension in pxt.json then it is ignored by the MakeCode docs generator. This is a good thing because the docs generator makes an h1 automatically, so if the README h1 was included there would be two h1's.
 
 ### Intellisense
 
@@ -45,9 +45,11 @@ Test files are specified under "testFiles" in pxt.json can be executed in two wa
 
 One way is to import the extension using the import button on the MakeCode homepage. For the module library import an individual module rather than the whole library. The test files will compile into 1 program that automatically runs in the simulator. You can generally add the appropriate simulators using 'ADD SIMULATORS' button and view console logs in 'Show data' view. You can edit the module files in MakeCode and push / pull changes using the GitHub interface. This interface is accessible through a button next to the project name in the bottom bar.
 
-The other way is to run 'mkc' to see if the test files compile. This compilation test also happens through the makecode.yml GitHub action, where applicable (product extensions). You can deploy the program to a micro:bit with 'mkc -d'
+The other way is to run 'mkc' to see if the test files compile. This compilation test also happens through the makecode.yml GitHub action, where applicable (product extensions). You can deploy the program to a micro:bit with 'mkc -d'.
 
-For quick and comprehensive compilation testing of tutorial content, the code for each tutorial is included as a test file. That way compilation is guaranteed before updating product extensions dependencies in the tutorials.
+It's admirable to strive for functional testing where you see the blocks in action, but simple compilation tests are always a great starting point. For a compilation test, all you have to do is drag one of each block into your program and copy that JavaScript. Functional tests can always be added later. Functional tests are only suitable for individual modules, not product extensions.
+
+For quick and comprehensive compilation testing of tutorial content, the code for each tutorial is included as a test file. Each tutorial test uses a unique namespace to avoid clashes. These tests should be run before updating product extension dependencies in the tutorials.
 
 ### Versioning
 

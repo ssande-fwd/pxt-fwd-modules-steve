@@ -1,7 +1,8 @@
-// pH tests
-// ph(): number
-// isPastThreshold(threshold: number, direction: ThresholdDirection): boolean
-// calibrate(standard1: number, reading1: number, standard2: number, reading2: number): void
+// pH Sensor Tests
+// Type: functional
+//  ph(): number
+//  isPastThreshold(threshold: number, direction: ThresholdDirection): boolean
+//  calibrate(standard1: number, reading1: number, standard2: number, reading2: number): void
 console.log("ph: " + fwdSensors.ph1.ph())
 input.onButtonPressed(Button.A, function () {
     if (fwdSensors.ph1.isPastThreshold(7, fwdEnums.OverUnder.Over)) {
