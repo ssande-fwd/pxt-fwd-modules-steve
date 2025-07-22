@@ -1,7 +1,3 @@
-input.onButtonPressed(Button.A, function () {
-    fwdLights.characterDisplay1.showString("test123")
-})
-input.onButtonPressed(Button.B, function () {
-    fwdLights.characterDisplay1.showString("test123")
-})
-basic.forever(function () {})
+fwdLights.initialize()
+fwdLights.characterDisplay1.printLine("", 1)
+fwdLights.characterDisplay1.printQuadrant("", 1)
