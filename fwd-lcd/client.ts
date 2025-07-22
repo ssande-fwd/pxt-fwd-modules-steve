@@ -11,7 +11,7 @@ namespace fwdLights {
     }
 
     //% fixedInstances blockGap=8
-    export class CharacterDisplayClient extends jacdac.Client {
+    export class LCDClient extends jacdac.Client {
         private readonly _enabled: jacdac.RegisterClient<[boolean]>
         private readonly _message: jacdac.RegisterClient<[string]>
 
@@ -62,7 +62,7 @@ namespace fwdLights {
         }
 
         /**
-         * Prints the provided text on the designated line of the LCD. Limited to 16 characters.
+         * Prints the provided text on the designated quadrant of the LCD. Limited to 8 characters.
          * @param message the message to print
          * @param quadrant the quadrant to print the message on
          */
@@ -148,8 +148,12 @@ namespace fwdLights {
         }
     }
 
-    //% fixedInstance whenUsed weight=1 block="character display1"
-    export const characterDisplay1 = new CharacterDisplayClient(
-        "character Display1"
-    )
+    //% fixedInstance whenUsed
+    export const lcd1 = new LCDClient("lcd1")
+    //% fixedInstance whenUsed
+    export const lcd2 = new LCDClient("lcd2")
+    //% fixedInstance whenUsed
+    export const lcd3 = new LCDClient("lcd3")
+    //% fixedInstance whenUsed
+    export const lcd4 = new LCDClient("lcd4")
 }
