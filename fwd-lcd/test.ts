@@ -1,3 +1,5 @@
 fwdLights.initialize()
-fwdLights.characterDisplay1.printLine("", 1)
-fwdLights.characterDisplay1.printQuadrant("", 1)
+fwdLights.lcd1.printQuadrantString("", 1)
+fwdLights.lcd1.printQuadrantNumber(0, 1)
+fwdLights.lcd1.printLineString("", 1)
+fwdLights.lcd1.printLineNumber(0, 1)

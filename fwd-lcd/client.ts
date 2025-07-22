@@ -31,15 +31,37 @@ namespace fwdLights {
         }
 
         /**
+         * Prints the provided number on the designated line of the LCD. Limited to 16 characters.
+         * A number over 16 characters is replaced with the message ">16 chars".
+         * An invalid line parameter triggers the message "err:!1-2" on line 1.
+         * @param number1 the number to print
+         * @param line the line to print the number on
+         */
+        //% block="print number $number1 on line $line of $this"
+        //% line.min=1 line.max=2 line.defl=1
+        //% blockId=fwd_lcd_print_line_number
+        //% group="LCD"
+        printLineNumber(number1: number, line: number) {
+            let string1 = number1.toString()
+
+            if (string1.length > 16) {
+                string1 = ">16 chars"
+            }
+            this.printLineString(string1, line)
+        }
+
+        /**
          * Prints the provided text on the designated line of the LCD. Limited to 16 characters.
+         * A string over 16 characters gets truncated.
+         * An invalid line parameter triggers the message "err:!1-2" on line 1.
          * @param message the message to print
          * @param line the line to print the message on
          */
-        //% block="print $message on line $line of $this"
+        //% block="print string $message on line $line of $this"
         //% line.min=1 line.max=2 line.defl=1
-        //% blockId=fwd_lcd_print_line
+        //% blockId=fwd_lcd_print_line_string
         //% group="LCD"
-        printLine(message: string, line: number) {
+        printLineString(message: string, line: number) {
             line -= 1
 
             if (message.length > 16) {
@@ -48,11 +70,9 @@ namespace fwdLights {
 
             if (line < 0 || line > 1) {
                 this.setCursor(0, 0)
-                this.setMessage("Error:")
-                this.setCursor(0, 1)
-                this.setMessage("Invalid Line #")
-                pause(5000)
-                this.clear()
+                this.setMessage("                ")
+                this.setCursor(0, 0)
+                this.setMessage("err:!1-2")
             } else {
                 this.setCursor(0, line)
                 this.setMessage("                ")
@@ -62,15 +82,37 @@ namespace fwdLights {
         }
 
         /**
+         * Prints the provided number on the designated quadrant of the LCD. Limited to 8 characters.
+         * A number over 8 characters is replaced with the message ">8 chars".
+         * An invalid quadrant parameter triggers the message "err:!1-4" in quadrant 1.
+         * @param number1 the number to print
+         * @param quadrant the quadrant to print the number on
+         */
+        //% block="print number $number1 on quadrant $quadrant of $this"
+        //% quadrant.min=1 quadrant.max=4 quadrant.defl=1
+        //% blockId=fwd_lcd_print_quadrant_number
+        //% group="LCD"
+        printQuadrantNumber(number1: number, quadrant: number) {
+            let string1 = number1.toString()
+
+            if (string1.length > 8) {
+                string1 = ">8 chars"
+            }
+            this.printQuadrantString(string1, quadrant)
+        }
+
+        /**
          * Prints the provided text on the designated quadrant of the LCD. Limited to 8 characters.
+         * A string over 8 characters gets truncated.
+         * An invalid quadrant parameter triggers the message "err:!1-4" in quadrant 1.
          * @param message the message to print
          * @param quadrant the quadrant to print the message on
          */
-        //% block="print $message on quadrant $quadrant of $this"
+        //% block="print string $message on quadrant $quadrant of $this"
         //% quadrant.min=1 quadrant.max=4 quadrant.defl=1
-        //% blockId=fwd_lcd_print_quadrant
+        //% blockId=fwd_lcd_print_quadrant_string
         //% group="LCD"
-        printQuadrant(message: string, quadrant: number) {
+        printQuadrantString(message: string, quadrant: number) {
             let col = 0
             let row = 0
 
@@ -80,11 +122,9 @@ namespace fwdLights {
 
             switch (quadrant) {
                 case 1:
-                    col = 0
-                    row = 0
                     break
                 case 2:
-                    col = 8
+                    col = 16 - message.length
                     row = 0
                     break
                 case 3:
@@ -92,17 +132,11 @@ namespace fwdLights {
                     row = 1
                     break
                 case 4:
-                    col = 8
+                    col = 16 - message.length
                     row = 1
                     break
                 default:
-                    this.setCursor(0, 0)
-                    this.setMessage("Error:")
-                    this.setCursor(0, 1)
-                    this.setMessage("Invalid Quadrant")
-                    pause(5000)
-                    this.clear()
-                    return
+                    message = "err:!1-4"
             }
 
             this.setCursor(col, row)
@@ -120,7 +154,6 @@ namespace fwdLights {
 
         setMessage(value: string) {
             super.start()
-            // this.setEnabled(true)
             const values = this._message.values as any[]
             values[0] = value
             this._message.values = values as [string]
