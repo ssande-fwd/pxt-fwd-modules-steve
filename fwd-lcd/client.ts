@@ -10,6 +10,23 @@ namespace fwdLights {
         pause(3000)
     }
 
+    /**
+     * Takes a number and rounds it to the provided decimal point.
+     */
+    //% block="round $number_ to $decimals decimals"
+    //% decimals.min=0 decimals.max=4 decimals.defl=0
+    //% blockId=fwd_lcd_round
+    //% group="LCD"
+    export function round(number_: number, decimals: number): number {
+        if (decimals < 0) {
+            return number_;
+        }
+
+        const factor = Math.pow(10, decimals);
+        let rounded = Math.round(number_ * factor) / factor;
+        return rounded;
+    }
+
     //% fixedInstances blockGap=8
     export class LCDClient extends jacdac.Client {
         private readonly _enabled: jacdac.RegisterClient<[boolean]>
@@ -34,20 +51,20 @@ namespace fwdLights {
          * Prints the provided number on the designated line of the LCD. Limited to 16 characters.
          * A number over 16 characters is replaced with the message ">16 chars".
          * An invalid line parameter triggers the message "err:!1-2" on line 1.
-         * @param number1 the number to print
+         * @param number_ the number to print
          * @param line the line to print the number on
          */
-        //% block="print number $number1 on line $line of $this"
+        //% block="print number $number_ on line $line of $this"
         //% line.min=1 line.max=2 line.defl=1
         //% blockId=fwd_lcd_print_line_number
         //% group="LCD"
-        printLineNumber(number1: number, line: number) {
-            let string1 = number1.toString()
+        printLineNumber(number_: number, line: number) {
+            let string_ = number_.toString()
 
-            if (string1.length > 16) {
-                string1 = ">16 chars"
+            if (string_.length > 16) {
+                string_ = ">16 chars"
             }
-            this.printLineString(string1, line)
+            this.printLineString(string_, line)
         }
 
         /**
@@ -85,20 +102,20 @@ namespace fwdLights {
          * Prints the provided number on the designated quadrant of the LCD. Limited to 8 characters.
          * A number over 8 characters is replaced with the message ">8 chars".
          * An invalid quadrant parameter triggers the message "err:!1-4" in quadrant 1.
-         * @param number1 the number to print
+         * @param number_ the number to print
          * @param quadrant the quadrant to print the number on
          */
-        //% block="print number $number1 on quadrant $quadrant of $this"
+        //% block="print number $number_ on quadrant $quadrant of $this"
         //% quadrant.min=1 quadrant.max=4 quadrant.defl=1
         //% blockId=fwd_lcd_print_quadrant_number
         //% group="LCD"
-        printQuadrantNumber(number1: number, quadrant: number) {
-            let string1 = number1.toString()
+        printQuadrantNumber(number_: number, quadrant: number) {
+            let string_ = number_.toString()
 
-            if (string1.length > 8) {
-                string1 = ">8 chars"
+            if (string_.length > 8) {
+                string_ = ">8 chars"
             }
-            this.printQuadrantString(string1, quadrant)
+            this.printQuadrantString(string_, quadrant)
         }
 
         /**
