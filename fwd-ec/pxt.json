@@ -4,11 +4,11 @@
     "description": "FWD Edu Electrical Conductivity",
     "license": "MIT",
     "dependencies": {
-        "fwd-base": "github:ssande-fwd/pxt-fwd-base-steve#v1.0.7",
-        "fwd-ec": "github:ssande-fwd/pxt-fwd-base-steve/fwd-ec#v1.0.7"
+        "fwd-base": "github:Forward-Education/pxt-fwd-base#v1.0.7"
     },
     "files": [
-        "client.ts"
+        "client.ts",
+        "constants.ts"
     ],
     "testFiles": [
         "test.ts"
