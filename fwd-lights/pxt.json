@@ -4,8 +4,8 @@
     "description": "Controls LED lights",
     "license": "MIT",
     "dependencies": {
-        "fwd-base": "github:Forward-Education/pxt-fwd-base#v1.0.7",
-        "fwd-lightbulb": "github:Forward-Education/pxt-fwd-base/lightbulb#v1.0.7"
+        "fwd-base": "github:Forward-Education/pxt-fwd-base#v1.0.8",
+        "fwd-lightbulb": "github:Forward-Education/pxt-fwd-base/lightbulb#v1.0.8"
     },
     "files": [
         "client.ts"

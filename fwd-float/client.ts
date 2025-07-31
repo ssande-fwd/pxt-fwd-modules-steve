@@ -15,9 +15,9 @@ namespace fwdSensors {
         //% blockId=fwd_float_on_change
         onFloatChange(event: fwdEnums.RaisedLowered, handler: () => void) {
             if (event === fwdEnums.RaisedLowered.Raised) {
-                super.onEvent(jacdac.ButtonEvent.Down, handler)
-            } else if (event === fwdEnums.RaisedLowered.Lowered) {
                 super.onEvent(jacdac.ButtonEvent.Up, handler)
+            } else if (event === fwdEnums.RaisedLowered.Lowered) {
+                super.onEvent(jacdac.ButtonEvent.Down, handler)
             }
         }
 
@@ -29,9 +29,9 @@ namespace fwdSensors {
         //% blockId=fwd_float_state
         floatState(): number {
             if (super.pressed()) {
-                return fwdEnums.RaisedLowered.Raised
-            } else {
                 return fwdEnums.RaisedLowered.Lowered
+            } else {
+                return fwdEnums.RaisedLowered.Raised
             }
         }
 
@@ -44,9 +44,9 @@ namespace fwdSensors {
         //% blockId=fwd_float_state_conditional
         floatStateConditional(state: fwdEnums.RaisedLowered): boolean {
             if (state === fwdEnums.RaisedLowered.Raised) {
-                return super.pressed()
-            } else {
                 return !super.pressed()
+            } else {
+                return super.pressed()
             }
         }
     }

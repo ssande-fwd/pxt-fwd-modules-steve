@@ -30,6 +30,8 @@ Search Results Card Title: the repo name trimmed of "pxt-"
 Search Results Card Description: the repo about section
 Search Query Target: the repo about section and README file
 
+It's best to put "fwd" somewhere in the about section. This ensures the extension will be at the top of the list if somebody searches fwd. If you rely on it getting picked up in the README other extensions can jump ahead of it in the search results.
+
 If the h1 in the README matches the name of the extension in pxt.json then it is ignored by the MakeCode docs generator. This is a good thing because the docs generator makes an h1 automatically, so if the README h1 was included there would be two h1's.
 
 ### Intellisense

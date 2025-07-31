@@ -4,8 +4,8 @@
     "description": "FWD Edu Climate Action Kit Gen. 2 Solar",
     "license": "MIT",
     "dependencies": {
-        "fwd-base": "github:Forward-Education/pxt-fwd-base#v1.0.7",
-        "jacdac-light-level": "github:jacdac/pxt-jacdac/light-level#v1.9.37"
+        "fwd-base": "github:Forward-Education/pxt-fwd-base#v1.0.8",
+        "jacdac-light-level": "github:jacdac/pxt-jacdac/light-level#v1.9.38"
     },
     "files": [
         "client.ts"
